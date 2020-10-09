@@ -46,10 +46,6 @@ class LGTVRemote(WebSocketClient):
         self.__ip = ip
         self.__name = name
 
-        if self.__hostname is not None:
-            # Over ride IP address when we know the hostname
-            self.__ip = socket.gethostbyname(self.__hostname)
-
         super(LGTVRemote, self).__init__('ws://' + self.__ip + ':3000/', exclude_headers=["Origin"])
 
     def execute(self, command, args):
@@ -84,7 +80,7 @@ class LGTVRemote(WebSocketClient):
         print (json.dumps({
             "closing": {
                 "code": code,
-                "reason": reason
+                "reason": str(reason)
             }
         }))
 
@@ -112,7 +108,7 @@ class LGTVRemote(WebSocketClient):
             method = list(command.keys())[0]
             args = command[method]
             self.__class__.__dict__[method](self, **args)
-        self.__waitClose()
+        #self.__waitClose()
 
     def __waitClose(self):
         self._th.join(timeout=1)

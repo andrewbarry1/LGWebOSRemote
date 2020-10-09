@@ -1,6 +1,8 @@
 # LGWebOSRemote
 Command line webOS remote for LGTVs. This tool uses a connection via websockets to port 3000 on newer LG TVs, there are other tools which use a restful connection to port 8080 however that port is closed on newer firmware versions.
 
+This fork aims to support python3
+
 ## Supported models
 
 ### Tested with
@@ -18,8 +20,6 @@ Command line webOS remote for LGTVs. This tool uses a connection via websockets 
   * OLED65B9PUA
   * OLED55C9
   * [please add more!]
-
-Tested with python 2.7 on mac/linux and works fine, your mileage may vary with windows, patches welcome.
 
 ### Likely supports
 
@@ -68,7 +68,7 @@ Requires wakeonlan, websocket for python and iproute2
 
     python -m venv lgtv-venv
     source lgtv-venv/bin/activate
-    pip install git+https://github.com/klattimer/LGWebOSRemote
+    pip install git+https://github.com/andrewbarry1/LGWebOSRemote
 
 ## Example usage
     # Scan/Authenticate
